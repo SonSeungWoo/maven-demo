@@ -21,35 +21,62 @@
 
     <repositories>
         <repository>
-            <id>sample-repository</id>
+            <id>local-repository</id>
             <name>local repository</name>
             <url>file://${project.basedir}/lib</url>
+        </repository>
+        <!--<repository>
+            <id>oracle</id>
+            <name>ORACLE JDBC Repository</name>
+            <url>https://maven.atlassian.com/3rdparty/</url>
+        </repository>-->
+        <repository>
+            <id>oracle</id>
+            <name>ORACLE JDBC Repository</name>
+            <url>http://maven.jahia.org/maven2</url>
         </repository>
     </repositories>
 
     <dependencies>
         <dependency>
-            <groupId>com.maven</groupId>
+            <groupId>com.oracle</groupId>
+            <artifactId>ojdbc7</artifactId>
+            <version>12.1.0.2</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.oracle.jdbc</groupId>
+                    <artifactId>xmlparserv2</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>com.custom</groupId>
             <artifactId>xdb6</artifactId>
             <version>1.0</version>
         </dependency>
-<!--
+
         <dependency>
-            <groupId>com.maven</groupId>
+            <groupId>com.custom</groupId>
             <artifactId>xmlparserv2</artifactId>
-            <version>12.2.0.1</version>
+            <version>12.1.0.2</version>
         </dependency>
--->
+
+        <dependency>
+            <groupId>com.custom</groupId>
+            <artifactId>orai18n-mapping</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+        <!--<dependency>
+            <groupId>com.oracle</groupId>
+            <artifactId>orai18n</artifactId>
+            <version>11.2.0.3</version>
+        </dependency>-->
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-tomcat</artifactId>
-            <scope>provided</scope>
         </dependency>
 
         <dependency>
@@ -60,7 +87,7 @@
     </dependencies>
 
     <build>
-        <finalName>demo</finalName>
+        <finalName>test</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
